@@ -1,5 +1,5 @@
 import { Person } from './Person';
-export interface Data {
+export default interface Data {
   count: number;
   next: string;
   previous: string;
