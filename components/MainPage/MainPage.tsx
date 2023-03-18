@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Button, SafeAreaView, FlatList } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { addData } from '../../redux/reducers/starwarsSlice';
 import getData from '../../utlis/getData/getData';
+import type { Person } from '../../entites/types/Person';
+import Title from '../Title/Title';
 
-const MainPage = () => {
+const MainPage: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(true);
   const data = useAppSelector((state) => state.data.data);
 
   useEffect(() => {
@@ -16,16 +17,21 @@ const MainPage = () => {
     });
   }, []);
 
+  if (!Array.isArray(data)) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Star Wars</Text>
-      <Text></Text>
+    <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-    </View>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <Title name={item.name} />}
+        keyExtractor={(item: Person) => item.name}
+      ></FlatList>
+    </SafeAreaView>
   );
 };
-
-export default MainPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -35,3 +41,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default MainPage;
+
+/**
+ * 
+ * 
+ state={loading} onChange={setLoading} 
+ */
