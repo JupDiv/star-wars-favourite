@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+
 import type { Person } from '../../entites/types/Person';
-import Planet from '../../entites/types/Planet';
 import getPlanet from '../../utlis/getPlanet/getPlanet';
 import getSpecies from '../../utlis/getSpec/getSpecies';
+import { StyledView, StyledText } from './PersonData.style';
 
 const PersonData: React.FC<Person> = ({
   name,
@@ -27,15 +27,13 @@ const PersonData: React.FC<Person> = ({
   }, []);
 
   return (
-    <View>
-      <View>
-        <Text>Name : {name}</Text>
-        <Text>BY : {birth_year}</Text>
-        <Text>Gender : {gender}</Text>
-        <Text>HW : {planet}</Text>
-        <Text>Species: {spec}</Text>
-      </View>
-    </View>
+    <StyledView>
+      <StyledText>Name : {name}</StyledText>
+      <StyledText>BY : {birth_year}</StyledText>
+      <StyledText>Gender : {gender}</StyledText>
+      <StyledText>HW : {planet}</StyledText>
+      <StyledText>Species: {spec}</StyledText>
+    </StyledView>
   );
 };
 

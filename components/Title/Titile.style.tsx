@@ -12,5 +12,3 @@ export const ButtonStyle = styled.Button`
   border-radius: 10px;
   text-align: center;
 `;
-
-export const test = styled.SafeAreaView``;

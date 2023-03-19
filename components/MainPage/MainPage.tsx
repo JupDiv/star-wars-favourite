@@ -1,45 +1,60 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
-import { addPersons, addPlanet } from '../../redux/reducers/starwarsSlice';
+import { addPersons } from '../../redux/reducers/starwarsSlice';
 import getPersons from '../../utlis/getPersons/getPersons';
 import type { Person } from '../../entites/types/Person';
 import Title from '../Title/Title';
+import {
+  MainWindowView,
+  ButtonStyle,
+  BlockButton,
+  CurrentPage,
+} from './MainPage.styled';
+import getPagination from '../../utlis/pagination/getMainData';
 
-const MainPage: React.FC = (): JSX.Element => {
+const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.persons);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  if (currentPage < 1) {
+    setCurrentPage(1);
+  }
 
   useEffect(() => {
-    getPersons().then((data) => {
+    getPersons(currentPage).then((data) => {
       dispatch(addPersons(data));
     });
-  }, []);
+    getPagination();
+  }, [currentPage]);
 
   if (!Array.isArray(data)) {
     return null;
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <MainWindowView>
       <StatusBar style="auto" />
       <FlatList
         data={data}
         renderItem={({ item }) => <Title {...item} />}
         keyExtractor={(item: Person) => item.id}
       ></FlatList>
-    </SafeAreaView>
+      <BlockButton>
+        <ButtonStyle
+          title={`Back`}
+          onPress={() => setCurrentPage(currentPage - 1)}
+        />
+        <CurrentPage>{currentPage}</CurrentPage>
+        <ButtonStyle
+          title={`Next`}
+          onPress={() => setCurrentPage(currentPage + 1)}
+        />
+      </BlockButton>
+    </MainWindowView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default MainPage;
