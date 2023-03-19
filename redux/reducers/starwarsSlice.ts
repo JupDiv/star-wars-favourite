@@ -1,28 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../redux/store/store';
-import type { Data } from '../../entites/types/Data';
+import Planet from '../../entites/types/Planet';
+import { Person } from '../../entites/types/Person';
 
 type initialStataType = {
-  data: [] | Data;
+  persons: Person[] | [];
+  planet: string;
 };
 
 const initialState: initialStataType = {
-  data: [],
+  persons: [],
+  planet: ``,
 };
 
 export const starWarsSlice = createSlice({
   name: 'starWars',
   initialState,
   reducers: {
-    addData: (state, action: PayloadAction<Data>) => {
-      state.data = action.payload;
+    addPersons: (state, action: PayloadAction<Person[]>) => {
+      state.persons = action.payload;
+      state.persons.map((person) => {
+        person.id = (Math.random() * 1000).toFixed(5);
+      });
+    },
+    addPlanet: (state, action: PayloadAction<string>) => {
+      state.planet = action.payload;
     },
   },
 });
 
-export const { addData } = starWarsSlice.actions;
+export const { addPersons, addPlanet } = starWarsSlice.actions;
 
-export const selectData = (state: RootState) => state.data;
+export const selectData = (state: RootState) => state.data.persons;
+export const selectPlanet = (state: RootState) => state.data.planet;
 
 export default starWarsSlice.reducer;

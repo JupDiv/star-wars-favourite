@@ -1,15 +1,14 @@
 import axios from 'axios';
+import Planet from '../../entites/types/Planet';
 
-const getPlanet = async () => {
+const getPlanet = async (url: string) => {
   try {
-    const url = 'https://swapi.dev/api/planets/1/';
     const {
-      data: { results },
-    } = await axios.get(url, {
+      data: { name },
+    } = await axios.get<{ name: string }>(url, {
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(results);
-    return results;
+    return name;
   } catch (error) {
     console.log(error);
   }

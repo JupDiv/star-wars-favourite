@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { TitleStyle, ButtonStyle } from './Titile.style';
 import PersonData from '../PersonData/PersonData';
+import { Person } from '../../entites/types/Person';
 
-type ItemProps = {
-  name: string;
-};
-
-const Title: React.FC<ItemProps> = ({ name }: ItemProps): JSX.Element => {
+const Title: React.FC<Person> = ({ name, ...other }): JSX.Element => {
   const [status, setStatus] = useState<boolean>(false);
   return (
     <TitleStyle>
@@ -15,7 +12,7 @@ const Title: React.FC<ItemProps> = ({ name }: ItemProps): JSX.Element => {
         onPress={() => setStatus(!status)}
         title={name}
       />
-      {status ? <PersonData name={name} /> : null}
+      {status ? <PersonData name={name} {...other} /> : null}
     </TitleStyle>
   );
 };

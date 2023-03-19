@@ -1,35 +1,29 @@
+import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import type { Person } from '../../entites/types/Person';
+import Planet from '../../entites/types/Planet';
+import getPlanet from '../../utlis/getPlanet/getPlanet';
 
-type PersonDataProps = {
-  name: string;
-};
-
-const PersonData: React.FC<PersonDataProps> = ({ name }): JSX.Element => {
-  const data = useAppSelector((state) => state.data.data);
-
-  if (!Array.isArray(data)) {
-    return null;
-  }
-
+const PersonData: React.FC<Person> = ({
+  name,
+  homeworld,
+  gender,
+  birth_year,
+  species,
+}): JSX.Element => {
+  const [planet, setPlanet] = useState<string>();
+  getPlanet(homeworld).then((data) => {
+    setPlanet(data);
+  });
   return (
     <View>
-      {data.map((item: Person) => {
-        if (item.name === name) {
-          return (
-            <View>
-              <Text>Name : {item.name}</Text>
-              <Text>BY : {item.birth_year}</Text>
-              <Text>Gender : {item.gender}</Text>
-              <Text>HW : {item.homeworld}</Text>
-              <Text>Species: {item.species}</Text>
-            </View>
-          );
-        } else {
-          return null;
-        }
-      })}
+      <View>
+        <Text>Name : {name}</Text>
+        <Text>BY : {birth_year}</Text>
+        <Text>Gender : {gender}</Text>
+        <Text>HW : {planet}</Text>
+        <Text>Species: {species}</Text>
+      </View>
     </View>
   );
 };

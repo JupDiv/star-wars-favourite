@@ -1,12 +1,13 @@
 import axios from 'axios';
 import Data from '../../entites/types/Data';
+import { Person } from '../../entites/types/Person';
 
-const getData = async () => {
+const getPersons = async () => {
   try {
     const url = 'https://swapi.dev/api/people/';
     const {
       data: { results },
-    } = await axios.get<Data>(url, {
+    } = await axios.get<{ results: Person[] }>(url, {
       headers: { 'Content-Type': 'application/json' },
       params: { page: 2 },
     });
@@ -16,4 +17,4 @@ const getData = async () => {
   }
 };
 
-export default getData;
+export default getPersons;
