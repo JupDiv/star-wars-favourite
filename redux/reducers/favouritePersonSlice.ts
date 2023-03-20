@@ -10,6 +10,7 @@ type initialStataType = {
 
 type favouritePersonTypeProp = {
   gender: string;
+  name: string;
 };
 
 const initialState: initialStataType = {
@@ -22,17 +23,13 @@ const favouritePersonSlice = createSlice({
   name: 'favouritePerson',
   initialState,
   reducers: {
-    addFavouritePerson: (
-      state,
-      action: PayloadAction<favouritePersonTypeProp>
-    ) => {
+    addFavouritePerson: (state, action: PayloadAction<string>) => {
       if (action.payload === 'male') {
         state.male.push(action.payload);
       }
       if (action.payload === 'female') {
         state.female.push(action.payload);
-      }
-      if (action.payload === 'n/a') {
+      } else {
         state.other.push(action.payload);
       }
     },
