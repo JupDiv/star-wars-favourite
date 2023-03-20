@@ -1,3 +1,7 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable camelcase */
+/* eslint-disable react/jsx-one-expression-per-line */
 import { useState, useEffect } from 'react';
 
 import type { Person } from '../../entites/types/Person';
@@ -5,13 +9,13 @@ import getPlanet from '../../utlis/getPlanet/getPlanet';
 import getSpecies from '../../utlis/getSpec/getSpecies';
 import { StyledView, StyledText } from './PersonData.style';
 
-const PersonData: React.FC<Person> = ({
+function PersonData({
   name,
   homeworld,
   gender,
   birth_year,
   species,
-}): JSX.Element => {
+}: Person): JSX.Element {
   const [planet, setPlanet] = useState<string>();
   const [spec, setSpec] = useState<string>();
 
@@ -19,12 +23,12 @@ const PersonData: React.FC<Person> = ({
     getPlanet(homeworld).then((data) => {
       setPlanet(data);
     });
-    species.map((spec) => {
-      getSpecies(spec).then((data) => {
-        setSpec(data);
+    species.map((personSpec) => {
+      getSpecies(personSpec).then((response) => {
+        setSpec(response);
       });
     });
-  }, []);
+  }, [homeworld, species]);
 
   return (
     <StyledView>
@@ -35,6 +39,6 @@ const PersonData: React.FC<Person> = ({
       <StyledText>Species: {spec}</StyledText>
     </StyledView>
   );
-};
+}
 
 export default PersonData;

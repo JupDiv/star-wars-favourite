@@ -3,8 +3,9 @@ import { TitleStyle, ButtonStyle } from './Titile.style';
 import PersonData from '../PersonData/PersonData';
 import { Person } from '../../entites/types/Person';
 
-const Title: React.FC<Person> = ({ name, ...other }): JSX.Element => {
+function Title({ name, ...other }: Person) {
   const [status, setStatus] = useState<boolean>(false);
+
   return (
     <TitleStyle>
       <ButtonStyle
@@ -15,6 +16,6 @@ const Title: React.FC<Person> = ({ name, ...other }): JSX.Element => {
       {status ? <PersonData name={name} {...other} /> : null}
     </TitleStyle>
   );
-};
+}
 
 export default Title;

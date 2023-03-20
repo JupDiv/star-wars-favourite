@@ -6,29 +6,19 @@ import { addPersons } from '../../redux/reducers/starwarsSlice';
 import getPersons from '../../utlis/getPersons/getPersons';
 import type { Person } from '../../entites/types/Person';
 import Title from '../Title/Title';
-import {
-  MainWindowView,
-  ButtonStyle,
-  BlockButton,
-  CurrentPage,
-} from './MainPage.styled';
-import getPagination from '../../utlis/pagination/getMainData';
+import { MainWindowView } from './MainPage.styled';
+import Direction from '../Pagination/Direction';
 
-const MainPage: React.FC = () => {
+function MainPage() {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.persons);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  if (currentPage < 1) {
-    setCurrentPage(1);
-  }
-
   useEffect(() => {
-    getPersons(currentPage).then((data) => {
-      dispatch(addPersons(data));
+    getPersons(currentPage).then((response) => {
+      dispatch(addPersons(response));
     });
-    getPagination();
-  }, [currentPage]);
+  }, [currentPage, dispatch]);
 
   if (!Array.isArray(data)) {
     return null;
@@ -41,20 +31,10 @@ const MainPage: React.FC = () => {
         data={data}
         renderItem={({ item }) => <Title {...item} />}
         keyExtractor={(item: Person) => item.id}
-      ></FlatList>
-      <BlockButton>
-        <ButtonStyle
-          title={`Back`}
-          onPress={() => setCurrentPage(currentPage - 1)}
-        />
-        <CurrentPage>{currentPage}</CurrentPage>
-        <ButtonStyle
-          title={`Next`}
-          onPress={() => setCurrentPage(currentPage + 1)}
-        />
-      </BlockButton>
+      />
+      <Direction currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </MainWindowView>
   );
-};
+}
 
 export default MainPage;
