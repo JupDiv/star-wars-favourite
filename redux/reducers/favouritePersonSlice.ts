@@ -29,7 +29,8 @@ const favouritePersonSlice = createSlice({
       }
       if (action.payload === 'female') {
         state.female.push(action.payload);
-      } else {
+      }
+      if (action.payload !== 'male' && action.payload !== 'female') {
         state.other.push(action.payload);
       }
     },
