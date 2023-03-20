@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { FlatList } from 'react-native';
@@ -8,6 +10,7 @@ import type { Person } from '../../entites/types/Person';
 import Title from '../Title/Title';
 import { MainWindowView } from './MainPage.styled';
 import Direction from '../Pagination/Direction';
+import FavouriteWindows from '../FavouriteWindows/FavouriteWindows';
 
 function MainPage() {
   const dispatch = useAppDispatch();
@@ -27,6 +30,7 @@ function MainPage() {
   return (
     <MainWindowView>
       <StatusBar style="auto" />
+      <FavouriteWindows />
       <FlatList
         data={data}
         renderItem={({ item }) => <Title {...item} />}

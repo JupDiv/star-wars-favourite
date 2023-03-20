@@ -6,3 +6,5 @@ export const StyledText = styled.Text`
   color: #f194ff;
   border: 1px solid blue;
 `;
+
+export const StyledFavouriteButtom = styled.Button``;

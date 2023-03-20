@@ -3,11 +3,16 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState, useEffect } from 'react';
-
+import { useAppDispatch } from '../../redux/hooks/hooks';
 import type { Person } from '../../entites/types/Person';
 import getPlanet from '../../utlis/getPlanet/getPlanet';
 import getSpecies from '../../utlis/getSpec/getSpecies';
-import { StyledView, StyledText } from './PersonData.style';
+import {
+  StyledView,
+  StyledText,
+  StyledFavouriteButtom,
+} from './PersonData.style';
+import { addFavouritePerson } from '../../redux/reducers/favouritePersonSlice';
 
 function PersonData({
   name,
@@ -16,6 +21,8 @@ function PersonData({
   birth_year,
   species,
 }: Person): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const [planet, setPlanet] = useState<string>();
   const [spec, setSpec] = useState<string>();
 
@@ -23,7 +30,7 @@ function PersonData({
     getPlanet(homeworld).then((data) => {
       setPlanet(data);
     });
-    species.map((personSpec) => {
+    species.forEach((personSpec): void => {
       getSpecies(personSpec).then((response) => {
         setSpec(response);
       });
@@ -37,6 +44,10 @@ function PersonData({
       <StyledText>Gender : {gender}</StyledText>
       <StyledText>HW : {planet}</StyledText>
       <StyledText>Species: {spec}</StyledText>
+      <StyledFavouriteButtom
+        title="Favourite"
+        onPress={() => dispatch(addFavouritePerson(gender))}
+      />
     </StyledView>
   );
 }

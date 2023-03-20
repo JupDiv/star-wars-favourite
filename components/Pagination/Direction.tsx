@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import getPagination from '../../utlis/pagination/getMainData';
 import Data from '../../entites/types/Data';
-import { BlockButton, ButtonStyle } from './styles';
+import { BlockButton, ButtonStyle } from './Direction.styled';
 
 type paginationResponse = Pick<Data, 'next' | 'previous'>;
 
