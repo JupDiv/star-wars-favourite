@@ -13,7 +13,7 @@ function Title({ name, ...other }: Person) {
         onPress={() => setStatus(!status)}
         title={name}
       />
-      <PersonData name={name} {...other} />
+      {status ? <PersonData name={name} {...other} /> : null}
     </TitleStyle>
   );
 }
