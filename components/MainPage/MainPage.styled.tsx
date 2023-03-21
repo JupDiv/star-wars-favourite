@@ -7,10 +7,11 @@ export const StyledText = styled.Text`
 `;
 
 export const MainWindowView = styled.View`
-  backgroundcolor: white;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto 0;
+  backgroundcolor: white;
+  margin-top: 50px;
 `;
 
 export const BlockButton = styled.View`
@@ -31,4 +32,6 @@ export const CurrentPage = styled.Text`
   font-size: 20px;
 `;
 
-export const BlockWindow = styled.ScrollView``;
+export const ScrollView = styled.ScrollView`
+  width: 100%;
+`;

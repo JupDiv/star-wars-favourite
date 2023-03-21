@@ -4,6 +4,7 @@ import {
   StyledText,
   StyledCurrentFans,
   StyledResetButtom,
+  CountWindow,
 } from './FavouriteWindows.styled';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { resetValueButton } from '../../redux/reducers/favouritePersonSlice';
@@ -23,16 +24,18 @@ export default function FavouriteWindows(): JSX.Element {
   ];
   return (
     <BlockWindow>
+      <CountWindow>
+        {genderArray.map((item) => (
+          <FavouriteWindow key={item.id}>
+            <StyledCurrentFans>{item.count}</StyledCurrentFans>
+            <StyledText>{item.gender}</StyledText>
+          </FavouriteWindow>
+        ))}
+      </CountWindow>
       <StyledResetButtom
         title="Reset"
         onPress={() => dispatch(resetValueButton())}
       />
-      {genderArray.map((item) => (
-        <FavouriteWindow key={item.id}>
-          <StyledCurrentFans>{item.count}</StyledCurrentFans>
-          <StyledText>{item.gender}</StyledText>
-        </FavouriteWindow>
-      ))}
     </BlockWindow>
   );
 }

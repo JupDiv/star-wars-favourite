@@ -8,7 +8,7 @@ import { addPersons } from '../../redux/reducers/starwarsSlice';
 import getPersons from '../../utlis/getPersons/getPersons';
 import type { Person } from '../../entites/types/Person';
 import Title from '../Title/Title';
-import { MainWindowView, BlockWindow } from './MainPage.styled';
+import { MainWindowView } from './MainPage.styled';
 import Direction from '../Pagination/Direction';
 import FavouriteWindows from '../FavouriteWindows/FavouriteWindows';
 
@@ -29,16 +29,15 @@ function MainPage() {
 
   return (
     <MainWindowView>
-      <BlockWindow>
-        <StatusBar style="auto" />
-        <FavouriteWindows />
-        <FlatList
-          data={data}
-          renderItem={({ item }) => <Title {...item} />}
-          keyExtractor={(item: Person) => item.id}
-        />
-        <Direction currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      </BlockWindow>
+      <StatusBar style="auto" />
+      <FavouriteWindows />
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <Title {...item} />}
+        keyExtractor={(item: Person) => item.id}
+      />
+
+      <Direction currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </MainWindowView>
   );
 }

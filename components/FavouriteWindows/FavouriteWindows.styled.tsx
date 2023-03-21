@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { View, Text, Button } from 'react-native';
 
-export const BlockWindow = styled(View)`
+export const BlockWindow = styled(View)``;
+
+export const CountWindow = styled(View)`
+  position: stycky;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
