@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 export const BlockWindow = styled(View)`
   display: flex;
@@ -25,4 +25,10 @@ export const StyledText = styled(Text)`
   color: black;
   margin-top: 15px;
   text-align: center;
+`;
+
+export const StyledResetButtom = styled(Button)`
+  margin: 0;
+  padding-top: 15px;
+  font-size: 20px;
 `;

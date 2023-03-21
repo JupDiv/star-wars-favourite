@@ -23,21 +23,57 @@ const favouritePersonSlice = createSlice({
   name: 'favouritePerson',
   initialState,
   reducers: {
-    addFavouritePerson: (state, action: PayloadAction<string>) => {
-      if (action.payload === 'male') {
-        state.male.push(action.payload);
+    addFavouritePerson: (
+      state,
+      action: PayloadAction<favouritePersonTypeProp>
+    ) => {
+      if (action.payload.gender === 'male') {
+        if (state.male.includes(action.payload.name)) return;
+        state.male.push(action.payload.name);
       }
-      if (action.payload === 'female') {
-        state.female.push(action.payload);
+      if (action.payload.gender === 'female') {
+        if (state.female.includes(action.payload.name)) return;
+        state.female.push(action.payload.name);
       }
-      if (action.payload !== 'male' && action.payload !== 'female') {
-        state.other.push(action.payload);
+      if (
+        action.payload.gender !== 'male' &&
+        action.payload.gender !== 'female'
+      ) {
+        if (state.other.includes(action.payload.name)) return;
+        state.other.push(action.payload.name);
       }
+    },
+    removeFavouritePerson: (
+      state,
+      action: PayloadAction<favouritePersonTypeProp>
+    ) => {
+      if (action.payload.gender === 'male') {
+        state.male = state.male.filter((item) => item !== action.payload.name);
+      }
+      if (action.payload.gender === 'female') {
+        state.female = state.female.filter(
+          (item) => item !== action.payload.name
+        );
+      }
+      if (
+        action.payload.gender !== 'male' &&
+        action.payload.gender !== 'female'
+      ) {
+        state.other = state.other.filter(
+          (item) => item !== action.payload.name
+        );
+      }
+    },
+    resetButton: (state) => {
+      state.male = [];
+      state.female = [];
+      state.other = [];
     },
   },
 });
 
-export const { addFavouritePerson } = favouritePersonSlice.actions;
+export const { addFavouritePerson, removeFavouritePerson, resetButton } =
+  favouritePersonSlice.actions;
 
 export const selectData = (state: RootState) => state.favouritePerson;
 
