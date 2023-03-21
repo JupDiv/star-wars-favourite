@@ -18,7 +18,7 @@ const initialState = {
 export default function Direction({
   currentPage,
   setCurrentPage,
-}: DirectionProps) {
+}: DirectionProps): JSX.Element {
   const [pagination, setPagination] =
     useState<paginationResponse>(initialState);
 

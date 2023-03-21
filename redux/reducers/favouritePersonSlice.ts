@@ -64,7 +64,7 @@ const favouritePersonSlice = createSlice({
         );
       }
     },
-    resetButton: (state) => {
+    resetValueButton: (state) => {
       state.male = [];
       state.female = [];
       state.other = [];
@@ -72,7 +72,7 @@ const favouritePersonSlice = createSlice({
   },
 });
 
-export const { addFavouritePerson, removeFavouritePerson, resetButton } =
+export const { addFavouritePerson, removeFavouritePerson, resetValueButton } =
   favouritePersonSlice.actions;
 
 export const selectData = (state: RootState) => state.favouritePerson;
