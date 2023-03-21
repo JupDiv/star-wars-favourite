@@ -30,3 +30,5 @@ export const ButtonStyle = styled.Button`
 export const CurrentPage = styled.Text`
   font-size: 20px;
 `;
+
+export const BlockWindow = styled.ScrollView``;
