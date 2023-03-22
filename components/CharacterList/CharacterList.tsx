@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { addPersons } from '../../redux/slices/charactersDataSlice';
-import FetchCharacters from '../../utlis/FetchCharacters/FetchCharacters';
+import FetchCharacters from '../../utlis/FetchData/FetchCharacters';
 import type { CharasterTypes } from '../../entites/types/CharasterTypes';
 import CharacterCard from '../CharacterCard/CharacterCard';
 import { MainWindowView } from './CharacterList.styled';

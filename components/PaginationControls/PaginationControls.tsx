@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getPagination from '../../utlis/FetchPaginatedData/FetchPaginatedData';
+import getPagination from '../../utlis/FetchData/FetchPaginatedData';
 import Data from '../../entites/types/CommonTypes';
 import { BlockButton, ButtonStyle } from './PaginationControls.styles';
 

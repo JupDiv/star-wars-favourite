@@ -4,8 +4,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks/hooks';
-import FetchPlanetData from '../../utlis/FetchPlanetData/FetchPlanetData';
-import FetchSpeciesData from '../../utlis/FetchSpeciesData/FetchSpeciesData';
+import FetchPlanetData from '../../utlis/FetchData/FetchPlanetData';
+import FetchSpeciesData from '../../utlis/FetchData/FetchSpeciesData';
 import {
   StyledView,
   StyledText,
