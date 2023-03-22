@@ -48,7 +48,7 @@ function PersonData({
     });
     setIsFavToggled(false);
   }, [homeworld, species, isToggle]);
-
+  //fuck
   function isToggleFavourite() {
     if (!isFavToggled) {
       dispatch(addFavouritePerson({ name, gender }));
