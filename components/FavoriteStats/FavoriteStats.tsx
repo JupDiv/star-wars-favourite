@@ -7,7 +7,7 @@ import {
   CountWindow,
 } from './FavoriteStats.styles';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
-import { resetValueButton } from '../../redux/reducers/favoriteCharactersSlice';
+import { resetValueButton } from '../../redux/slices/favoriteCharactersSlice';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {

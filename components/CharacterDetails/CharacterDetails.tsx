@@ -4,7 +4,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks/hooks';
-import type { CharasterTypes } from '../../entites/types/CharasterTypes';
 import FetchPlanetData from '../../utlis/FetchPlanetData/FetchPlanetData';
 import FetchSpeciesData from '../../utlis/FetchSpeciesData/FetchSpeciesData';
 import {
@@ -15,7 +14,8 @@ import {
 import {
   addFavouritePerson,
   removeFavouritePerson,
-} from '../../redux/reducers/favoriteCharactersSlice';
+} from '../../redux/slices/favoriteCharactersSlice';
+import type { CharasterTypes } from '../../entites/types/CharasterTypes';
 
 type PersonDataProps = {
   isToggle: boolean;
