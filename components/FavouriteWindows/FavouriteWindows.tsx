@@ -10,8 +10,13 @@ import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { resetValueButton } from '../../redux/reducers/favouritePersonSlice';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
+type FavouriteWindowsProps = {
+  setIsToggle: (value: boolean) => void;
+};
 
-export default function FavouriteWindows(): JSX.Element {
+export default function FavouriteWindows({
+  setIsToggle,
+}: FavouriteWindowsProps): JSX.Element {
   const dispatch = useAppDispatch();
   const female = useAppSelector((state) => state.favouritePerson.female);
   const male = useAppSelector((state) => state.favouritePerson.male);
@@ -22,6 +27,11 @@ export default function FavouriteWindows(): JSX.Element {
     { id: 2, gender: 'female', count: female.length },
     { id: 3, gender: 'other', count: other.length },
   ];
+
+  function resetValue() {
+    setIsToggle(false);
+    dispatch(resetValueButton([]));
+  }
   return (
     <BlockWindow>
       <CountWindow>
@@ -32,10 +42,7 @@ export default function FavouriteWindows(): JSX.Element {
           </FavouriteWindow>
         ))}
       </CountWindow>
-      <StyledResetButtom
-        title="Reset"
-        onPress={() => dispatch(resetValueButton([]))}
-      />
+      <StyledResetButtom title="Reset" onPress={() => resetValue()} />
     </BlockWindow>
   );
 }

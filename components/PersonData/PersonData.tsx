@@ -17,18 +17,26 @@ import {
   removeFavouritePerson,
 } from '../../redux/reducers/favouritePersonSlice';
 
+type PersonDataProps = {
+  setIsToggle: (value: boolean) => void;
+  isToggle: boolean;
+};
+
+type OverallPersonData = Person & PersonDataProps;
+
 function PersonData({
   name,
   homeworld,
   gender,
   birth_year,
   species,
-}: Person): JSX.Element {
+  isToggle,
+  setIsToggle,
+}: OverallPersonData): JSX.Element {
   const dispatch = useAppDispatch();
-  const [isToggle, setIsToggle] = useState<boolean>(false);
   const [planet, setPlanet] = useState<string>();
   const [spec, setSpec] = useState<string>();
-
+  const [isFavToggled, setIsFavToggled] = useState<boolean>(isToggle);
   useEffect(() => {
     getPlanet(homeworld).then((data) => {
       setPlanet(data);
@@ -38,15 +46,18 @@ function PersonData({
         setSpec(response);
       });
     });
-  }, [homeworld, species]);
+    setIsFavToggled(false);
+  }, [homeworld, species, isToggle]);
 
-  function isToggleFavourite(toggle: boolean) {
-    if (!toggle) {
-      setIsToggle(false);
+  function isToggleFavourite() {
+    if (!isFavToggled) {
       dispatch(addFavouritePerson({ name, gender }));
-    } else {
+      setIsFavToggled(true);
       setIsToggle(true);
+    } else {
       dispatch(removeFavouritePerson({ name, gender }));
+      setIsFavToggled(false);
+      setIsToggle(false);
     }
   }
 
@@ -59,7 +70,7 @@ function PersonData({
       <StyledText>Species: {spec}</StyledText>
       <StyledFavouriteButtom
         title="Favourite"
-        onPress={() => isToggleFavourite(isToggle)}
+        onPress={() => isToggleFavourite()}
       />
     </StyledView>
   );

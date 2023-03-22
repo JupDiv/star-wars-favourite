@@ -16,6 +16,7 @@ function MainPage() {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.persons);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isToggle, setIsToggle] = useState<boolean>(false);
 
   useEffect(() => {
     getPersons(currentPage).then((response) => {
@@ -30,10 +31,12 @@ function MainPage() {
   return (
     <MainWindowView>
       <StatusBar style="auto" />
-      <FavouriteWindows />
+      <FavouriteWindows setIsToggle={setIsToggle} />
       <FlatList
         data={data}
-        renderItem={({ item }) => <Title {...item} />}
+        renderItem={({ item }) => (
+          <Title isToggle={isToggle} setIsToggle={setIsToggle} {...item} />
+        )}
         keyExtractor={(item: Person) => item.id}
       />
 
