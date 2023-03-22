@@ -3,25 +3,17 @@ import { TitleStyle, ButtonStyle } from './CharacterCard.styles';
 import {
   CardContainer,
   CardSubtitle,
-  CardBody,
 } from '../CharacterCard/CharacterCard.styles';
 import CharacterDetails from '../CharacterDetails/CharacterDetails';
 import { CharasterTypes } from '../../entites/types/CharasterTypes';
 
-type TitleProps = {
+type AdditionalProps = {
   isToggle: boolean;
 };
 
-function CharacterCard({ name, ...other }: CharasterTypes & TitleProps) {
-  const [status, setStatus] = useState<boolean>(false);
-
+function CharacterCard({ name, ...other }: CharasterTypes & AdditionalProps) {
   return (
     <CardContainer>
-      <CardSubtitle
-        color="#f194ff"
-        onPress={() => setStatus(!status)}
-        title={name}
-      />
       <CharacterDetails name={name} {...other} />
     </CardContainer>
   );

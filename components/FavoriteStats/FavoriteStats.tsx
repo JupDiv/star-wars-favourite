@@ -1,18 +1,14 @@
-import {
-  BlockWindow,
-  FavouriteWindow,
-  StyledText,
-  StyledCurrentFans,
-  StyledResetButtom,
-  CountWindow,
-} from './FavoriteStats.styles';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { resetValueButton } from '../../redux/slices/favoriteCharactersSlice';
 import {
   HeaderContainer,
   HeaderTitle,
+  HeaderCountBlock,
   HeaderCountTab,
+  HeaderResetButton,
+  HeaderButtonText,
 } from './FavoriteStats.styles';
+import { colors } from '../../styles/theme';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {
@@ -43,13 +39,15 @@ export default function FavoriteStats({
     <HeaderContainer>
       <HeaderCountTab>
         {genderArray.map((item) => (
-          <HeaderTitle key={item.id}>
-            <StyledText>{item.count}</StyledText>
-            <StyledText>{item.gender}</StyledText>
-          </HeaderTitle>
+          <HeaderCountBlock key={item.id}>
+            <HeaderTitle>{item.count}</HeaderTitle>
+            <HeaderTitle>{item.gender}</HeaderTitle>
+          </HeaderCountBlock>
         ))}
       </HeaderCountTab>
-      <StyledResetButtom title="Reset" onPress={() => resetValue()} />
+      <HeaderResetButton color={colors.primary} onPress={() => resetValue()}>
+        <HeaderButtonText>Reset</HeaderButtonText>
+      </HeaderResetButton>
     </HeaderContainer>
   );
 }

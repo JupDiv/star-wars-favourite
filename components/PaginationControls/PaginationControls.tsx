@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import getPagination from '../../utlis/FetchData/FetchPaginatedData';
 import Data from '../../entites/types/CommonTypes';
-import { BlockButton, ButtonStyle } from './PaginationControls.styles';
+import {
+  BlockButton,
+  PaginationButtonStyle,
+  PaginationButtonText,
+} from './PaginationControls.styles';
 
 type paginationResponse = Pick<Data, 'next' | 'previous'>;
 
@@ -29,17 +33,33 @@ export default function PaginationControls({
   return (
     <BlockButton>
       {pagination.previous ? (
-        <ButtonStyle
-          title="Back"
-          onPress={() => setCurrentPage(currentPage - 1)}
-        />
+        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage - 1)}>
+          <PaginationButtonText>Back</PaginationButtonText>
+        </PaginationButtonStyle>
       ) : null}
       {pagination.next ? (
-        <ButtonStyle
-          title="Next"
-          onPress={() => setCurrentPage(currentPage + 1)}
-        />
+        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage + 1)}>
+          <PaginationButtonText>Next</PaginationButtonText>
+        </PaginationButtonStyle>
       ) : null}
     </BlockButton>
   );
 }
+
+/**
+ * 
+ * 
+ *     <PaginationBlockButton>
+      {pagination.previous ? (
+        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage - 1)}>
+          <PaginationButtonText>Back</PaginationButtonText>
+        </PaginationButtonStyle>
+      ) : null}
+      {pagination.next ? (
+        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage + 1)}>
+          {' '}
+          <PaginationButtonText>Next</PaginationButtonText>
+        </PaginationButtonStyle>
+      ) : null}
+    </PaginationBlockButton>
+ */
