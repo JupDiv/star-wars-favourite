@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Data from '../../entites/types/Data';
+import CommonTypes from '../../entites/types/CommonTypes';
 
 type urlForPagination = number;
-type paginationResponse = Pick<Data, 'next' | 'previous'>;
+type paginationResponse = Pick<CommonTypes, 'next' | 'previous'>;
 
 const getPagination = async (numberOfPage: urlForPagination) => {
   try {

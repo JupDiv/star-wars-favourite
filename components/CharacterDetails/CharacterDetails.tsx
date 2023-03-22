@@ -4,45 +4,45 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks/hooks';
-import type { Person } from '../../entites/types/Person';
-import getPlanet from '../../utlis/getPlanet/getPlanet';
-import getSpecies from '../../utlis/getSpec/getSpecies';
+import type { CharasterTypes } from '../../entites/types/CharasterTypes';
+import FetchPlanetData from '../../utlis/FetchPlanetData/FetchPlanetData';
+import FetchSpeciesData from '../../utlis/FetchSpeciesData/FetchSpeciesData';
 import {
   StyledView,
   StyledText,
   StyledFavouriteButtom,
-} from './PersonData.style';
+} from './CharacterDetails.styles';
 import {
   addFavouritePerson,
   removeFavouritePerson,
-} from '../../redux/reducers/favouritePersonSlice';
+} from '../../redux/reducers/favoriteCharactersSlice';
 
 type PersonDataProps = {
   isToggle: boolean;
 };
 
-type OverallPersonData = Person & PersonDataProps;
+type commonCharasterType = CharasterTypes & PersonDataProps;
 
-function PersonData({
+function CharacterDetails({
   name,
   homeworld,
   gender,
   birth_year,
   species,
   isToggle,
-}: OverallPersonData): JSX.Element {
+}: commonCharasterType): JSX.Element {
   const dispatch = useAppDispatch();
-  const [planet, setPlanet] = useState<string>();
-  const [spec, setSpec] = useState<string>();
+  const [isHomeWorld, setPlanet] = useState<string>();
+  const [isSpecies, setSpec] = useState<string>();
   const [isFavToggled, setIsFavToggled] = useState<boolean>(false);
 
   useEffect(() => {
-    getPlanet(homeworld).then((data) => {
+    FetchPlanetData(homeworld).then((data) => {
       setPlanet(data);
     });
 
     species.forEach((personSpec): void => {
-      getSpecies(personSpec).then((response) => {
+      FetchSpeciesData(personSpec).then((response) => {
         setSpec(response);
       });
     });
@@ -65,8 +65,8 @@ function PersonData({
       <StyledText>Name : {name}</StyledText>
       <StyledText>BY : {birth_year}</StyledText>
       <StyledText>Gender : {gender}</StyledText>
-      <StyledText>HW : {planet}</StyledText>
-      <StyledText>Species: {spec}</StyledText>
+      <StyledText>HW : {isHomeWorld}</StyledText>
+      <StyledText>Species: {isSpecies}</StyledText>
       <StyledFavouriteButtom
         title="Favourite"
         onPress={() => isToggleFavourite()}
@@ -75,4 +75,4 @@ function PersonData({
   );
 }
 
-export default PersonData;
+export default CharacterDetails;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getPlanet = async (url: string) => {
+const FetchPlanetData = async (url: string) => {
   try {
     const {
       data: { name },
@@ -13,4 +13,4 @@ const getPlanet = async (url: string) => {
   }
 };
 
-export default getPlanet;
+export default FetchPlanetData;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import getPagination from '../../utlis/pagination/getMainData';
-import Data from '../../entites/types/Data';
-import { BlockButton, ButtonStyle } from './Direction.styled';
+import getPagination from '../../utlis/FetchPaginatedData/FetchPaginatedData';
+import Data from '../../entites/types/CommonTypes';
+import { BlockButton, ButtonStyle } from './PaginationControls.styles';
 
 type paginationResponse = Pick<Data, 'next' | 'previous'>;
 
@@ -15,7 +15,7 @@ const initialState = {
   previous: null,
 };
 
-export default function Direction({
+export default function PaginationControls({
   currentPage,
   setCurrentPage,
 }: DirectionProps): JSX.Element {

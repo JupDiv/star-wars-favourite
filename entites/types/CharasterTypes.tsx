@@ -1,4 +1,4 @@
-export interface Person {
+export interface CharasterTypes {
   name: string;
   height: string;
   mass: string;

@@ -1,4 +1,4 @@
-export default interface Planet {
+export default interface PlanetTypes {
   name: string;
   rotation_period: string;
   orbital_period: string;

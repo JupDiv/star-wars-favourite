@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../../redux/store/store';
+import type { RootState } from '../store/store';
 
 type initialStataType = {
   male: string[];

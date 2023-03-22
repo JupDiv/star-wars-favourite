@@ -5,9 +5,9 @@ import {
   StyledCurrentFans,
   StyledResetButtom,
   CountWindow,
-} from './FavouriteWindows.styled';
+} from './FavoriteStats.styles';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
-import { resetValueButton } from '../../redux/reducers/favouritePersonSlice';
+import { resetValueButton } from '../../redux/reducers/favoriteCharactersSlice';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {
@@ -15,7 +15,7 @@ type FavouriteWindowsProps = {
   isToggle: boolean;
 };
 
-export default function FavouriteWindows({
+export default function FavoriteStats({
   setIsToggle,
   isToggle,
 }: FavouriteWindowsProps): JSX.Element {

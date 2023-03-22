@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import starWarsSlice from '../reducers/starwarsSlice';
-import favouritePersonSlice from '../reducers/favouritePersonSlice';
+import starWarsSlice from '../reducers/charactersDataSlice';
+import favouritePersonSlice from '../reducers/favoriteCharactersSlice';
 
 const store = configureStore({
   reducer: {

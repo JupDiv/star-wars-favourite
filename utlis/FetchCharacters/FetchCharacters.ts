@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { Person } from '../../entites/types/Person';
+import { CharasterTypes } from '../../entites/types/CharasterTypes';
 
-const getPersons = async (numberOfPage: number) => {
+const FetchCharacters = async (numberOfPage: number) => {
   try {
     const url = 'https://swapi.dev/api/people/';
     const {
       data: { results },
-    } = await axios.get<{ results: Person[] }>(url, {
+    } = await axios.get<{ results: CharasterTypes[] }>(url, {
       headers: { 'Content-Type': 'application/json' },
       params: { page: numberOfPage },
     });
@@ -16,4 +16,4 @@ const getPersons = async (numberOfPage: number) => {
   }
 };
 
-export default getPersons;
+export default FetchCharacters;
