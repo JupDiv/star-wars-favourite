@@ -34,7 +34,7 @@ export default function FavouriteWindows(): JSX.Element {
       </CountWindow>
       <StyledResetButtom
         title="Reset"
-        onPress={() => dispatch(resetValueButton())}
+        onPress={() => dispatch(resetValueButton([]))}
       />
     </BlockWindow>
   );

@@ -28,18 +28,15 @@ const favouritePersonSlice = createSlice({
       action: PayloadAction<favouritePersonTypeProp>
     ) => {
       if (action.payload.gender === 'male') {
-        if (state.male.includes(action.payload.name)) return;
         state.male.push(action.payload.name);
       }
       if (action.payload.gender === 'female') {
-        if (state.female.includes(action.payload.name)) return;
         state.female.push(action.payload.name);
       }
       if (
         action.payload.gender !== 'male' &&
         action.payload.gender !== 'female'
       ) {
-        if (state.other.includes(action.payload.name)) return;
         state.other.push(action.payload.name);
       }
     },
@@ -64,10 +61,10 @@ const favouritePersonSlice = createSlice({
         );
       }
     },
-    resetValueButton: (state) => {
-      state.male = [];
-      state.female = [];
-      state.other = [];
+    resetValueButton: (state, action: PayloadAction<[]>) => {
+      state.male = action.payload;
+      state.female = action.payload;
+      state.other = action.payload;
     },
   },
 });

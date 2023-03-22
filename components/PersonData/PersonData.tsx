@@ -41,12 +41,12 @@ function PersonData({
   }, [homeworld, species]);
 
   function isToggleFavourite(toggle: boolean) {
-    if (toggle) {
+    if (!toggle) {
       setIsToggle(false);
-      dispatch(removeFavouritePerson({ name, gender }));
+      dispatch(addFavouritePerson({ name, gender }));
     } else {
       setIsToggle(true);
-      dispatch(addFavouritePerson({ name, gender }));
+      dispatch(removeFavouritePerson({ name, gender }));
     }
   }
 
