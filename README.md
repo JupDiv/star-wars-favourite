@@ -1,58 +1,61 @@
-<body>
-    <h1>Star Wars Characters App</h1>
-    <p>A React Native app that displays information about Star Wars characters using the <a href="https://swapi.dev/">Star Wars API (SWAPI)</a>.</p>
+# Star Wars Characters App
 
-    <h2>Features</h2>
-    <ul>
-        <li>Fetch and display a list of Star Wars characters</li>
-        <li>View details about each character, including their home planet and species</li>
-        <li>Add and remove characters to/from your favorites list</li>
-        <li>View favorite characters count by gender</li>
-        <li>Reset favorite characters list</li>
-    </ul>
+A React Native app that displays information about Star Wars characters using the [Star Wars API (SWAPI)](https://swapi.dev/).
 
-    <h2>Installation</h2>
-    <p>Clone this repository and navigate to the project folder:</p>
-    <pre><code>git clone https://github.com/yourusername/star-wars-react-native.git
+## Features
 
+- Fetch and display a list of Star Wars characters
+- View details about each character, including their home planet and species
+- Add and remove characters to/from your favorites list
+- View favorite characters count by gender
+- Reset favorite characters list
+
+## Installation
+
+Clone this repository and navigate to the project folder:
+
+```sh
+git clone https://github.com/JupDiv/star-wars-favourite.git
 cd star-wars-react-native
-</code></pre>
-<p>Install dependencies:</p>
-<pre><code>npm install
-</code></pre>
+```
 
-    <h2>Running the App</h2>
-    <p>To run the app on Android:</p>
-    <pre><code>npm run android
+Install dependencies:
 
-</code></pre>
-<p>To run the app on iOS:</p>
-<pre><code>npm run ios
-</code></pre>
-<p><em>NOTE: You need to have the necessary Android and/or iOS development environment set up on your machine.</em></p>
+```sh
+npm install
+```
 
-    <h2>Project Structure</h2>
-    <p>The app is organized into the following main folders:</p>
-    <ul>
-        <li><code>src</code>: Contains all the source code, including components, hooks, and Redux slices
-            <ul>
-                <li><code>components</code>: Contains all React Native components used in the app, organized by feature</li>
-                <li><code>redux</code>: Contains Redux store configuration and slices</li>
-                <li><code>utils</code>: Contains utility functions for fetching data from the API</li>
-            </ul>
-        </li>
-        <li><code>assets</code>: Contains images and other static assets used in the app</li>
-    </ul>
+## Running the App
 
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>React Native</li>
-        <li>Redux Toolkit</li>
-        <li>styled-components</li>
-        <li>Star Wars API (SWAPI)</li>
-    </ul>
+To run the app on Android:
 
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License.</p>
+```sh
+npm run android
+```
 
-</body>
+To run the app on iOS:
+
+```
+npm run ios
+```
+
+NOTE: You need to have the necessary Android and/or iOS development environment set up on your machine.
+
+## Project Structure
+
+The app is organized into the following main folders:
+
+- `src`: Contains all the source code, including components, hooks, and Redux slices
+  - `components`: Contains all React Native components used in the app, organized by feature
+  - `redux`: Contains Redux store configuration and slices
+  - `utils`: Contains utility functions for fetching data from the API
+- `assets`: Contains images and other static assets used in the app
+
+## Technologies Used
+
+- React Native
+- Redux Toolkit
+- styled-components
+- Star Wars API (SWAPI)
+
+Author: Hlib Laskin aka JupDiv
