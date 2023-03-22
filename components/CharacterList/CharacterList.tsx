@@ -21,7 +21,7 @@ const monospace = {
   monospace: require('../../assets/fonts/SpaceMono/SpaceMono-Regular.ttf'),
 };
 
-function CharacterList() {
+function CharacterList(): JSX.Element {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.fetchData.charaster);
   const [currentPage, setCurrentPage] = useState<number>(1);

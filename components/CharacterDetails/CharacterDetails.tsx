@@ -34,7 +34,7 @@ function CharacterDetails({
   isToggle,
 }: commonCharasterType): JSX.Element {
   const dispatch = useAppDispatch();
-  const [isHomeWorld, setPlanet] = useState<string>();
+  const [homeWorld, setPlanet] = useState<string>();
   const [isSpecies, setSpec] = useState<string>();
   const [isFavToggled, setIsFavToggled] = useState<boolean>(false);
 
@@ -67,7 +67,7 @@ function CharacterDetails({
       <CharasterSubtitle>Name : {name}</CharasterSubtitle>
       <CharasterBody>BY : {birth_year}</CharasterBody>
       <CharasterBody>Gender : {gender}</CharasterBody>
-      <CharasterBody>HW : {isHomeWorld}</CharasterBody>
+      <CharasterBody>HW : {homeWorld}</CharasterBody>
       <CharasterBody>Species: {isSpecies}</CharasterBody>
       <CharasterButton onPress={() => isToggleFavourite()}>
         <CharasterButtonText>Add to favorites</CharasterButtonText>

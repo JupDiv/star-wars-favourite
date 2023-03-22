@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { resetValueButton } from '../../redux/slices/favoriteCharactersSlice';
 import {

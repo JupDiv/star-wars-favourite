@@ -16,7 +16,7 @@ Clone this repository and navigate to the project folder:
 
 ```sh
 git clone https://github.com/JupDiv/star-wars-favourite.git
-cd star-wars-react-native
+cd StarWars
 ```
 
 Install dependencies:

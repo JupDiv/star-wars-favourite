@@ -30,6 +30,9 @@ export const CharasterSubtitle = styled.Text`
   font-size: ${typography.subtitle.fontSize}px;
   font-weight: ${typography.subtitle.fontWeight};
   color: ${colors.primary};
+  border: 3px solid ${colors.dark};
+  border-radius: 8px;
+  padding: 5px;
 `;
 
 export const CharasterBody = styled.Text`
