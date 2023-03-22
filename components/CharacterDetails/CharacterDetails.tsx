@@ -7,10 +7,11 @@ import { useAppDispatch } from '../../redux/hooks/hooks';
 import FetchPlanetData from '../../utlis/FetchData/FetchPlanetData';
 import FetchSpeciesData from '../../utlis/FetchData/FetchSpeciesData';
 import {
-  CardButton,
-  CardBody,
-  CardSubtitle,
-  CardContainer,
+  CharasterButton,
+  CharasterBody,
+  CharasterSubtitle,
+  CharasterContainer,
+  CharasterButtonText,
 } from './CharacterDetails.styles';
 import {
   addFavouriteCharaster,
@@ -62,14 +63,16 @@ function CharacterDetails({
   }
 
   return (
-    <CardContainer>
-      <CardSubtitle>Name : {name}</CardSubtitle>
-      <CardBody>BY : {birth_year}</CardBody>
-      <CardBody>Gender : {gender}</CardBody>
-      <CardBody>HW : {isHomeWorld}</CardBody>
-      <CardBody>Species: {isSpecies}</CardBody>
-      <CardButton title="Favourite" onPress={() => isToggleFavourite()} />
-    </CardContainer>
+    <CharasterContainer>
+      <CharasterSubtitle>Name : {name}</CharasterSubtitle>
+      <CharasterBody>BY : {birth_year}</CharasterBody>
+      <CharasterBody>Gender : {gender}</CharasterBody>
+      <CharasterBody>HW : {isHomeWorld}</CharasterBody>
+      <CharasterBody>Species: {isSpecies}</CharasterBody>
+      <CharasterButton onPress={() => isToggleFavourite()}>
+        <CharasterButtonText>Add to favorites</CharasterButtonText>
+      </CharasterButton>
+    </CharasterContainer>
   );
 }
 

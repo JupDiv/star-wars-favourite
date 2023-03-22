@@ -8,7 +8,6 @@ import {
   HeaderResetButton,
   HeaderButtonText,
 } from './FavoriteStats.styles';
-import { colors } from '../../styles/theme';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {
@@ -45,7 +44,7 @@ export default function FavoriteStats({
           </HeaderCountBlock>
         ))}
       </HeaderCountTab>
-      <HeaderResetButton color={colors.primary} onPress={() => resetValue()}>
+      <HeaderResetButton onPress={() => resetValue()}>
         <HeaderButtonText>Reset</HeaderButtonText>
       </HeaderResetButton>
     </HeaderContainer>
