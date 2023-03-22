@@ -8,6 +8,11 @@ import {
 } from './FavoriteStats.styles';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { resetValueButton } from '../../redux/slices/favoriteCharactersSlice';
+import {
+  HeaderContainer,
+  HeaderTitle,
+  HeaderCountTab,
+} from './FavoriteStats.styles';
 
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {
@@ -20,9 +25,9 @@ export default function FavoriteStats({
   isToggle,
 }: FavouriteWindowsProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const female = useAppSelector((state) => state.favouritePerson.female);
-  const male = useAppSelector((state) => state.favouritePerson.male);
-  const other = useAppSelector((state) => state.favouritePerson.other);
+  const female = useAppSelector((state) => state.favouriteCharaster.female);
+  const male = useAppSelector((state) => state.favouriteCharaster.male);
+  const other = useAppSelector((state) => state.favouriteCharaster.other);
 
   const genderArray: genderArrayType = [
     { id: 1, gender: 'male', count: male.length },
@@ -35,16 +40,16 @@ export default function FavoriteStats({
     dispatch(resetValueButton([]));
   }
   return (
-    <BlockWindow>
-      <CountWindow>
+    <HeaderContainer>
+      <HeaderCountTab>
         {genderArray.map((item) => (
-          <FavouriteWindow key={item.id}>
-            <StyledCurrentFans>{item.count}</StyledCurrentFans>
+          <HeaderTitle key={item.id}>
+            <StyledText>{item.count}</StyledText>
             <StyledText>{item.gender}</StyledText>
-          </FavouriteWindow>
+          </HeaderTitle>
         ))}
-      </CountWindow>
+      </HeaderCountTab>
       <StyledResetButtom title="Reset" onPress={() => resetValue()} />
-    </BlockWindow>
+    </HeaderContainer>
   );
 }

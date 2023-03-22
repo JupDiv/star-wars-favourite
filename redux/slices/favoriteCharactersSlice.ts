@@ -19,11 +19,11 @@ const initialState: initialStataType = {
   other: [],
 };
 
-const favouritePersonSlice = createSlice({
-  name: 'favouritePerson',
+const favoriteCharactersSlice = createSlice({
+  name: 'favoriteCharactersSlice',
   initialState,
   reducers: {
-    addFavouritePerson: (
+    addFavouriteCharaster: (
       state,
       action: PayloadAction<favouritePersonTypeProp>
     ) => {
@@ -43,7 +43,7 @@ const favouritePersonSlice = createSlice({
         state.other.push(action.payload.name);
       }
     },
-    removeFavouritePerson: (
+    removeFavouriteCharaster: (
       state,
       action: PayloadAction<favouritePersonTypeProp>
     ) => {
@@ -72,9 +72,12 @@ const favouritePersonSlice = createSlice({
   },
 });
 
-export const { addFavouritePerson, removeFavouritePerson, resetValueButton } =
-  favouritePersonSlice.actions;
+export const {
+  addFavouriteCharaster,
+  removeFavouriteCharaster,
+  resetValueButton,
+} = favoriteCharactersSlice.actions;
 
-export const selectData = (state: RootState) => state.favouritePerson;
+export const selectData = (state: RootState) => state.favouriteCharaster;
 
-export default favouritePersonSlice.reducer;
+export default favoriteCharactersSlice.reducer;

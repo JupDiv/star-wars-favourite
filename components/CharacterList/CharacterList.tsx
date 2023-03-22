@@ -1,25 +1,25 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import { useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
+import { colors, typography } from '../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
-import { addPersons } from '../../redux/slices/charactersDataSlice';
+import { addCharasters } from '../../redux/slices/charactersDataSlice';
 import FetchCharacters from '../../utlis/FetchData/FetchCharacters';
 import type { CharasterTypes } from '../../entites/types/CharasterTypes';
 import CharacterCard from '../CharacterCard/CharacterCard';
-import { MainWindowView } from './CharacterList.styled';
 import PaginationControls from '../PaginationControls/PaginationControls';
 import FavoriteStats from '../FavoriteStats/FavoriteStats';
 
 function CharacterList() {
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.data.persons);
+  const data = useAppSelector((state) => state.fetchData.charaster);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isToggle, setIsToggle] = useState<boolean>(false);
 
   useEffect(() => {
     FetchCharacters(currentPage).then((response) => {
-      dispatch(addPersons(response));
+      dispatch(addCharasters(response));
     });
   }, [currentPage, dispatch]);
 
@@ -28,7 +28,12 @@ function CharacterList() {
   }
 
   return (
-    <MainWindowView>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: colors.dark,
+      }}
+    >
       <FavoriteStats isToggle={isToggle} setIsToggle={setIsToggle} />
       <FlatList
         data={data}
@@ -42,7 +47,7 @@ function CharacterList() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-    </MainWindowView>
+    </SafeAreaView>
   );
 }
 

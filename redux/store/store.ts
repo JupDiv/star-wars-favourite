@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import starWarsSlice from '../slices/charactersDataSlice';
-import favouritePersonSlice from '../slices/favoriteCharactersSlice';
+import charactersDataSlice from '../slices/charactersDataSlice';
+import favoriteCharactersSlice from '../slices/favoriteCharactersSlice';
 
 const store = configureStore({
   reducer: {
     // Add your reducers here
-    data: starWarsSlice,
-    favouritePerson: favouritePersonSlice,
+    fetchData: charactersDataSlice,
+    favouriteCharaster: favoriteCharactersSlice,
   },
 });
 

@@ -7,13 +7,14 @@ import { useAppDispatch } from '../../redux/hooks/hooks';
 import FetchPlanetData from '../../utlis/FetchData/FetchPlanetData';
 import FetchSpeciesData from '../../utlis/FetchData/FetchSpeciesData';
 import {
-  StyledView,
-  StyledText,
-  StyledFavouriteButtom,
+  CardButton,
+  CardBody,
+  CardSubtitle,
+  CardContainer,
 } from './CharacterDetails.styles';
 import {
-  addFavouritePerson,
-  removeFavouritePerson,
+  addFavouriteCharaster,
+  removeFavouriteCharaster,
 } from '../../redux/slices/favoriteCharactersSlice';
 import type { CharasterTypes } from '../../entites/types/CharasterTypes';
 
@@ -52,26 +53,23 @@ function CharacterDetails({
 
   function isToggleFavourite() {
     if (!isFavToggled) {
-      dispatch(addFavouritePerson({ name, gender }));
+      dispatch(addFavouriteCharaster({ name, gender }));
       setIsFavToggled(true);
     } else {
-      dispatch(removeFavouritePerson({ name, gender }));
+      dispatch(removeFavouriteCharaster({ name, gender }));
       setIsFavToggled(false);
     }
   }
 
   return (
-    <StyledView>
-      <StyledText>Name : {name}</StyledText>
-      <StyledText>BY : {birth_year}</StyledText>
-      <StyledText>Gender : {gender}</StyledText>
-      <StyledText>HW : {isHomeWorld}</StyledText>
-      <StyledText>Species: {isSpecies}</StyledText>
-      <StyledFavouriteButtom
-        title="Favourite"
-        onPress={() => isToggleFavourite()}
-      />
-    </StyledView>
+    <CardContainer>
+      <CardSubtitle>Name : {name}</CardSubtitle>
+      <CardBody>BY : {birth_year}</CardBody>
+      <CardBody>Gender : {gender}</CardBody>
+      <CardBody>HW : {isHomeWorld}</CardBody>
+      <CardBody>Species: {isSpecies}</CardBody>
+      <CardButton title="Favourite" onPress={() => isToggleFavourite()} />
+    </CardContainer>
   );
 }
 
