@@ -31,12 +31,10 @@ function MainPage() {
   return (
     <MainWindowView>
       <StatusBar style="auto" />
-      <FavouriteWindows setIsToggle={setIsToggle} />
+      <FavouriteWindows isToggle={isToggle} setIsToggle={setIsToggle} />
       <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <Title isToggle={isToggle} setIsToggle={setIsToggle} {...item} />
-        )}
+        renderItem={({ item }) => <Title isToggle={isToggle} {...item} />}
         keyExtractor={(item: Person) => item.id}
       />
 

@@ -18,7 +18,6 @@ import {
 } from '../../redux/reducers/favouritePersonSlice';
 
 type PersonDataProps = {
-  setIsToggle: (value: boolean) => void;
   isToggle: boolean;
 };
 
@@ -31,33 +30,33 @@ function PersonData({
   birth_year,
   species,
   isToggle,
-  setIsToggle,
 }: OverallPersonData): JSX.Element {
   const dispatch = useAppDispatch();
   const [planet, setPlanet] = useState<string>();
   const [spec, setSpec] = useState<string>();
-  const [isFavToggled, setIsFavToggled] = useState<boolean>(isToggle);
+  const [isFavToggled, setIsFavToggled] = useState<boolean>(false);
+
   useEffect(() => {
     getPlanet(homeworld).then((data) => {
       setPlanet(data);
     });
+
     species.forEach((personSpec): void => {
       getSpecies(personSpec).then((response) => {
         setSpec(response);
       });
     });
+
     setIsFavToggled(false);
   }, [homeworld, species, isToggle]);
-  //fuck
+
   function isToggleFavourite() {
     if (!isFavToggled) {
       dispatch(addFavouritePerson({ name, gender }));
       setIsFavToggled(true);
-      setIsToggle(true);
     } else {
       dispatch(removeFavouritePerson({ name, gender }));
       setIsFavToggled(false);
-      setIsToggle(false);
     }
   }
 

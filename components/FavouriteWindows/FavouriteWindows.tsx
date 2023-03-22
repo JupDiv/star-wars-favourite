@@ -12,10 +12,12 @@ import { resetValueButton } from '../../redux/reducers/favouritePersonSlice';
 type genderArrayType = { id: number; gender: string; count: number }[];
 type FavouriteWindowsProps = {
   setIsToggle: (value: boolean) => void;
+  isToggle: boolean;
 };
 
 export default function FavouriteWindows({
   setIsToggle,
+  isToggle,
 }: FavouriteWindowsProps): JSX.Element {
   const dispatch = useAppDispatch();
   const female = useAppSelector((state) => state.favouritePerson.female);
@@ -29,7 +31,7 @@ export default function FavouriteWindows({
   ];
 
   function resetValue() {
-    setIsToggle(false);
+    setIsToggle(!isToggle);
     dispatch(resetValueButton([]));
   }
   return (

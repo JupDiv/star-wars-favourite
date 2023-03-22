@@ -4,11 +4,10 @@ import PersonData from '../PersonData/PersonData';
 import { Person } from '../../entites/types/Person';
 
 type TitleProps = {
-  setIsToggle: (value: boolean) => void;
   isToggle: boolean;
 };
 
-function Title({ name, id, setIsToggle, ...other }: Person & TitleProps) {
+function Title({ name, ...other }: Person & TitleProps) {
   const [status, setStatus] = useState<boolean>(false);
 
   return (
@@ -18,7 +17,7 @@ function Title({ name, id, setIsToggle, ...other }: Person & TitleProps) {
         onPress={() => setStatus(!status)}
         title={name}
       />
-      <PersonData name={name} setIsToggle={setIsToggle} {...other} />
+      <PersonData name={name} {...other} />
     </TitleStyle>
   );
 }
