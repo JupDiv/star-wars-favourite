@@ -33,7 +33,24 @@ export const CharasterSubtitle = styled.Text`
   border-radius: 8px;
 `;
 
-export const CharasterBody = styled.Text`
+export const CharasterBody = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: ${typography.body.fontFamily};
+  font-size: ${typography.body.fontSize}px;
+  color: ${colors.light};
+  border: 1px solid ${colors.primary};
+`;
+
+export const CharasterTextTitle = styled.Text`
+  font-family: ${typography.subtitle.fontFamily};
+  font-size: ${typography.subtitle.fontSize}px;
+  font-weight: ${typography.subtitle.fontWeight};
+  color: ${colors.primary};
+`;
+
+export const CharasterText = styled.Text`
   font-family: ${typography.body.fontFamily};
   font-size: ${typography.body.fontSize}px;
   color: ${colors.light};

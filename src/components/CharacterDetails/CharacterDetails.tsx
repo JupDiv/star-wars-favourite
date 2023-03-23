@@ -12,6 +12,8 @@ import {
   CharasterSubtitle,
   CharasterContainer,
   CharasterButtonText,
+  CharasterText,
+  CharasterTextTitle,
 } from './CharacterDetails.styles';
 import {
   addFavouriteCharaster,
@@ -64,11 +66,23 @@ function CharacterDetails({
 
   return (
     <CharasterContainer>
-      <CharasterSubtitle>Name : {name}</CharasterSubtitle>
-      <CharasterBody>BY : {birth_year}</CharasterBody>
-      <CharasterBody>Gender : {gender}</CharasterBody>
-      <CharasterBody>HW : {homeWorld}</CharasterBody>
-      <CharasterBody>Species: {isSpecies}</CharasterBody>
+      <CharasterSubtitle>Name{name}</CharasterSubtitle>
+      <CharasterBody>
+        <CharasterTextTitle>BY</CharasterTextTitle>
+        <CharasterText>{birth_year}</CharasterText>
+      </CharasterBody>
+      <CharasterBody>
+        <CharasterTextTitle>Gender</CharasterTextTitle>
+        <CharasterText>{gender}</CharasterText>
+      </CharasterBody>
+      <CharasterBody>
+        <CharasterTextTitle>HW</CharasterTextTitle>
+        <CharasterText>{homeWorld}</CharasterText>
+      </CharasterBody>
+      <CharasterBody>
+        <CharasterTextTitle>Species</CharasterTextTitle>
+        <CharasterText>{isSpecies}</CharasterText>
+      </CharasterBody>
       <CharasterButton onPress={() => isToggleFavourite()}>
         <CharasterButtonText>Add to favorites</CharasterButtonText>
       </CharasterButton>
