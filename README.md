@@ -49,6 +49,8 @@ The app is organized into the following main folders:
   - `components`: Contains all React Native components used in the app, organized by feature
   - `redux`: Contains Redux store configuration and slices
   - `utils`: Contains utility functions for fetching data from the API
+  - `styles`: Contains common styles for app
+  - `entites`: Contains type for Typescript
 - `assets`: Contains images and other static assets used in the app
 
 ## Technologies Used
