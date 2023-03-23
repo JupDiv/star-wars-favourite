@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import getPagination from '../../utlis/FetchData/FetchPaginatedData';
-import Data from '../../src/entites/types/CommonTypes';
+import Data from '../../entites/types/CommonTypes';
 import {
   BlockButton,
   PaginationButtonStyle,

@@ -5,9 +5,9 @@ import {
   CardContainer,
   CardNameButton,
   CardButtonText,
-} from '../CharacterCard/CharacterCard.styles';
+} from './CharacterCard.styles';
 import CharacterDetails from '../CharacterDetails/CharacterDetails';
-import { CharasterTypes } from '../../src/entites/types/CharasterTypes';
+import { CharasterTypes } from '../../entites/types/CharasterTypes';
 
 type AdditionalProps = {
   isToggle: boolean;

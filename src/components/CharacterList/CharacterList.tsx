@@ -18,7 +18,7 @@ import FavoriteStats from '../FavoriteStats/FavoriteStats';
 SplashScreen.preventAutoHideAsync();
 
 const monospace = {
-  monospace: require('../../assets/fonts/SpaceMono/SpaceMono-Regular.ttf'),
+  monospace: require('../../../assets/fonts/SpaceMono/SpaceMono-Regular.ttf'),
 };
 
 function CharacterList(): JSX.Element {
