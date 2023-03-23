@@ -2,7 +2,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-one-expression-per-line */
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks/hooks';
 import FetchPlanetData from '../../utlis/FetchData/FetchPlanetData';
@@ -87,7 +86,6 @@ function CharacterDetails({
         <CharasterText>{isSpecies}</CharasterText>
       </CharasterBody>
       <CharasterButton onPress={() => isToggleFavourite()}>
-        {/* <FavoriteIcon /> */}
         <CharasterButtonText>Add to favorites</CharasterButtonText>
       </CharasterButton>
     </CharasterContainer>
