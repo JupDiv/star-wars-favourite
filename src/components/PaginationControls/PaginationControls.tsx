@@ -36,7 +36,11 @@ export default function PaginationControls({
         <PaginationButtonStyle onPress={() => setCurrentPage(currentPage - 1)}>
           <PaginationButtonText>Back</PaginationButtonText>
         </PaginationButtonStyle>
-      ) : null}
+      ) : (
+        <PaginationButtonStyle disabled style={{ opacity: 0 }}>
+          <PaginationButtonText>Back</PaginationButtonText>
+        </PaginationButtonStyle>
+      )}
       {pagination.next ? (
         <PaginationButtonStyle onPress={() => setCurrentPage(currentPage + 1)}>
           <PaginationButtonText>Next</PaginationButtonText>

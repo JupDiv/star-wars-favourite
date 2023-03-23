@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { CharasterTypes } from '../../entites/types/CharasterTypes';
 
-const FetchCharacters = async (numberOfPage: number) => {
+const FetchCharacters = async (
+  numberOfPage: number
+): Promise<CharasterTypes[]> => {
   try {
     const url = 'https://swapi.dev/api/people/';
     const {
