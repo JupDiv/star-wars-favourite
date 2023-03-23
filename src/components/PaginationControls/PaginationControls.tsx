@@ -30,6 +30,12 @@ export default function PaginationControls({
     getPagination(currentPage).then((response) => setPagination(response));
   }, [currentPage]);
 
+  const disabledButton = (
+    <PaginationButtonStyle disabled style={{ opacity: 0 }}>
+      <PaginationButtonText>Back</PaginationButtonText>
+    </PaginationButtonStyle>
+  );
+
   return (
     <BlockButton>
       {pagination.previous ? (
@@ -37,9 +43,7 @@ export default function PaginationControls({
           <PaginationButtonText>Back</PaginationButtonText>
         </PaginationButtonStyle>
       ) : (
-        <PaginationButtonStyle disabled style={{ opacity: 0 }}>
-          <PaginationButtonText>Back</PaginationButtonText>
-        </PaginationButtonStyle>
+        disabledButton
       )}
       {pagination.next ? (
         <PaginationButtonStyle onPress={() => setCurrentPage(currentPage + 1)}>
@@ -49,21 +53,3 @@ export default function PaginationControls({
     </BlockButton>
   );
 }
-
-/**
- * 
- * 
- *     <PaginationBlockButton>
-      {pagination.previous ? (
-        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage - 1)}>
-          <PaginationButtonText>Back</PaginationButtonText>
-        </PaginationButtonStyle>
-      ) : null}
-      {pagination.next ? (
-        <PaginationButtonStyle onPress={() => setCurrentPage(currentPage + 1)}>
-          {' '}
-          <PaginationButtonText>Next</PaginationButtonText>
-        </PaginationButtonStyle>
-      ) : null}
-    </PaginationBlockButton>
- */
