@@ -25,14 +25,6 @@ export const CharasterContainer = styled.View`
   padding: 10px;
 `;
 
-export const CharasterSubtitle = styled.Text`
-  font-family: ${typography.subtitle.fontFamily};
-  font-size: ${typography.subtitle.fontSize}px;
-  font-weight: ${typography.subtitle.fontWeight};
-  color: ${colors.primary};
-  border-radius: 8px;
-`;
-
 export const CharasterBody = styled.View`
   display: flex;
   flex-direction: row;
